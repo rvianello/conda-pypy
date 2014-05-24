@@ -18,7 +18,8 @@ requirements:
     - bzip2
     - libffi
     - expat
-    - pkg-config
+    - ncurses
+    - pkg-config [ False ]
     
 about:
   home: http://pypy.org
