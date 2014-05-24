@@ -1,0 +1,12 @@
+package:
+  name: expat
+  version: 2.1.0
+
+source:
+  fn: expat-2.1.0.tar.gz
+  url: http://downloads.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz
+
+about:
+  home: http://sourceforge.net/projects/expat/
+  license: MIT
+  summary: This is James Clark's Expat XML parser library in C. It is a stream oriented parser that requires setting handlers to deal with the structure that the parser discovers in the document.
