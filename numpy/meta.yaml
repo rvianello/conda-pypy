@@ -1,0 +1,19 @@
+package:
+  name: numpy
+  version: 1.0
+
+source:
+  git_url: https://bitbucket.org/pypy/numpy.git
+  git_branch: master
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - pypy
+
+about:
+  home: http://pypy.org
+
+  
