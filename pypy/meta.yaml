@@ -10,19 +10,17 @@ source:
 build:
   number: 0
 
-  track_features:
-    - pypy
-
 requirements:
   build:
-    - python
-    - sphinx
+    - openssl
+    - sqlite
+    - system
+    - tk
     - zlib
     - bzip2
     - libffi
     - expat
     - ncurses
-    - pkg-config [ False ]
 
   run:
     - openssl

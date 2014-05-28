@@ -1,8 +1,16 @@
+pushd ${SRC_DIR}
+
+wget https://bitbucket.org/squeaky/portable-pypy/downloads/pypy-2.3-linux_x86_64-portable.tar.bz2
+tar xvf pypy-2.3-linux_x86_64-portable.tar.bz2
+mv pypy-2.3-linux_x86_64-portable pypy-portable
+
+popd 
+
 pushd ${SRC_DIR}/pypy/goal
 
-CFLAGS=-I${PREFIX}/include \
-LDFLAGS=-L${PREFIX}/lib \
-$PYTHON ../../rpython/bin/rpython -Ojit targetpypystandalone
+CFLAGS=-I${PREFIX}/include LDFLAGS=-L${PREFIX}/lib \
+${SRC_DIR}/pypy-portable/bin/pypy \
+../../rpython/bin/rpython -Ojit targetpypystandalone
 
 # any tests I can run from here?
 
