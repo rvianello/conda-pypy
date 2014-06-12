@@ -1,0 +1,92 @@
+package:
+  name: pip
+  version: !!str 1.5.6
+
+source:
+  fn: pip-1.5.6.tar.gz
+  url: https://pypi.python.org/packages/source/p/pip/pip-1.5.6.tar.gz
+  md5: 01026f87978932060cc86c1dc527903e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  #preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pip = pip:main
+    #
+    # Would create an entry point called pip that calls pip.main()
+
+    - pip=pip:main
+    - pip2=pip:main
+    - pip2.7=pip:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  track_features:
+    - pypy
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pip
+    - pip._vendor
+    - pip._vendor._markerlib
+    - pip._vendor.colorama
+    - pip._vendor.distlib
+    - pip._vendor.distlib._backport
+    - pip._vendor.html5lib
+    - pip._vendor.html5lib.filters
+    - pip._vendor.html5lib.serializer
+    - pip._vendor.html5lib.treeadapters
+    - pip._vendor.html5lib.treebuilders
+    - pip._vendor.html5lib.treewalkers
+    - pip._vendor.html5lib.trie
+    - pip._vendor.requests
+    - pip._vendor.requests.packages
+    - pip._vendor.requests.packages.chardet
+    - pip._vendor.requests.packages.urllib3
+    - pip._vendor.requests.packages.urllib3.contrib
+    - pip._vendor.requests.packages.urllib3.packages
+    - pip._vendor.requests.packages.urllib3.packages.ssl_match_hostname
+    - pip._vendor.requests.packages.urllib3.util
+    - pip.backwardcompat
+    - pip.commands
+    - pip.vcs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pip --help
+    - pip2 --help
+    - pip2.7 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pip.pypa.io/
+  license: MIT License
+  summary: 'A tool for installing and managing Python packages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
