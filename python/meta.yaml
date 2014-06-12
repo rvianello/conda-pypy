@@ -1,0 +1,43 @@
+package:
+  name: python
+  version: "2.7.6"
+
+source:
+  fn: pypy-2.3-src.tar.bz2
+  url: https://bitbucket.org/pypy/pypy/downloads/pypy-2.3-src.tar.bz2
+  md5: c93a8e47f3b3109af2f66d2bd766eb97
+
+build:
+  number: 0
+  
+  track_features:
+    - pypy
+
+requirements:
+  build:
+    - openssl
+    - sqlite
+    - system
+    - tk
+    - zlib
+    - bzip2
+    - libffi
+    - expat
+    - ncurses
+
+  run:
+    - openssl
+    - sqlite
+    - system
+    - tk
+    - zlib
+    - bzip2
+    - libffi
+    - expat
+    - ncurses
+    
+    
+about:
+  home: http://pypy.org
+  license: MIT
+  summary: PyPy is a fast, compliant alternative implementation of the Python language.

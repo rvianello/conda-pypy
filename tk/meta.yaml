@@ -1,0 +1,21 @@
+package:
+  name: tk
+  version: 8.6.1
+
+
+source:
+  fn: tk8.6.1-src.tar.gz
+  url: http://downloads.sourceforge.net/tcl/tk8.6.1-src.tar.gz
+  md5: 63f21c3a0e0cefbd854b4eb29b129ac6
+
+
+requirements:
+  build:
+    - tcl
+  run:
+    - tcl
+
+
+about:
+  home: http://www.tcl.tk/
+  license: BSD-style
