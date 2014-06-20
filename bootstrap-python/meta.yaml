@@ -7,7 +7,7 @@ source:
   url: https://bitbucket.org/pypy/pypy/get/release-2.3.1.tar.bz2
 
 build:
-  number: 1
+  number: 0
   
   features:
     - pypy
@@ -17,7 +17,6 @@ build:
 
 requirements:
   build:
-    - opt-python
     - openssl
     - sqlite
     - system
