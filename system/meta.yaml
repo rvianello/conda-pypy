@@ -1,10 +1,6 @@
 package:
   name: system
-  version: 2.17
+  version: 6.5
 
 build:
-  number: 3
-
-
-about:
-  license: LGPL
+  number: 0
