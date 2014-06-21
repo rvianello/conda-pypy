@@ -1,0 +1,6 @@
+channels:
+  - ric/channel/pypy
+
+envs_dirs:
+  - ~/pypy-envs
+
