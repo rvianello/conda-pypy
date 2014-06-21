@@ -1,0 +1,19 @@
+package:
+  name: sqlite
+  version: 3.8.5
+
+source:
+  fn: sqlite-autoconf-3080500.tar.gz
+  url: http://sqlite.org/2014/sqlite-autoconf-3080500.tar.gz
+
+
+#requirements:
+#  build:
+#     - readline
+#  run:
+#     - readline
+
+
+about:
+  home: http://www.sqlite.org
+  license: public domain

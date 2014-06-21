@@ -1,0 +1,12 @@
+package:
+  name: bzip2
+  version: 1.0
+
+source:
+  fn: bzip2-1.0.6.tar.gz
+  url: http://bzip.org/1.0.6/bzip2-1.0.6.tar.gz
+
+
+about:
+  home: http://bzip.org
+  license: BSD-like

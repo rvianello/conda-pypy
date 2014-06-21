@@ -1,0 +1,17 @@
+package:
+  name: openssl
+  version: 1.0.1h
+
+
+source:
+  fn: openssl-1.0.1h.tar.gz
+  url: http://www.openssl.org/source/openssl-1.0.1h.tar.gz
+  patches:
+    # http://www.linuxfromscratch.org/patches/downloads/openssl/
+
+build:
+  number: 0
+
+about:
+  home: http://www.openssl.org
+  license: Apache style
