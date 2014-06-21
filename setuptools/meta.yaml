@@ -10,7 +10,7 @@ source:
     - never_zip_safe.patch
 
 build:
-  number: 0
+  number: 1
 
   track_features:
     - pypy

@@ -1,14 +1,6 @@
 package:
   name: pip
-  version: !!str 1.5.6
-
-source:
-  fn: pip-1.5.6.tar.gz
-  url: https://pypi.python.org/packages/source/p/pip/pip-1.5.6.tar.gz
-  md5: 01026f87978932060cc86c1dc527903e
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  version: "__conda_version__.txt"
 
 build:
   #preserve_egg_dir: True
@@ -26,7 +18,7 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 2
 
   track_features:
     - pypy

@@ -1,9 +1,5 @@
 #!/bin/bash
+wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py -O - | $PYTHON
 
-$PYTHON setup.py install
+$PYTHON -c "import pip; print(pip.__version__)" > __conda_version__.txt
 
-# Add more build steps here, if they are necessary.
-
-# See
-# http://docs.continuum.io/conda/build.html
-# for a list of environment variables that are set during the build process.
