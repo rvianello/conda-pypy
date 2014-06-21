@@ -1,0 +1,11 @@
+--- setuptools/command/bdist_egg.py
++++ setuptools/command/bdist_egg.py
+@@ -232,6 +232,7 @@
+                     os.unlink(path)
+ 
+     def zip_safe(self):
++        return False # never zip safe in a conda env
+         safe = getattr(self.distribution,'zip_safe',None)
+         if safe is not None:
+             return safe
+

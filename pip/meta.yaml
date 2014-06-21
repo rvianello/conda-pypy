@@ -38,6 +38,7 @@ requirements:
 
   run:
     - python
+    - setuptools
 
 test:
   # Python imports
