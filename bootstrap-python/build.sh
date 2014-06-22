@@ -26,8 +26,8 @@ popd
 
 # compile the py modules to bytecode
 ${SRC_DIR}/pypy-portable/bin/pypy -m compileall ${SRC_DIR}/site-packages
-${SRC_DIR}/pypy-portable/bin/pypy -m compileall ${SRC_DIR}/site-packages
-${SRC_DIR}/pypy-portable/bin/pypy -m compileall ${SRC_DIR}/site-packages
+${SRC_DIR}/pypy-portable/bin/pypy -m compileall ${SRC_DIR}/lib_pypy
+${SRC_DIR}/pypy-portable/bin/pypy -m compileall ${SRC_DIR}/lib-python
 
 # copy the library code
 cp -r ${SRC_DIR}/site-packages ${PREFIX}
