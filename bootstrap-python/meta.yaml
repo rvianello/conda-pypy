@@ -7,7 +7,7 @@ source:
   url: https://bitbucket.org/pypy/pypy/get/release-2.3.1.tar.bz2
 
 build:
-  number: 0
+  number: 1
   
   features:
     - pypy
