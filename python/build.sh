@@ -24,7 +24,9 @@ popd
 # compile the py modules to bytecode
 ${PREFIX}/opt/python -m compileall ${SRC_DIR}/site-packages
 ${PREFIX}/opt/python -m compileall ${SRC_DIR}/lib_pypy
+set +e # some test modules do not compile
 ${PREFIX}/opt/python -m compileall ${SRC_DIR}/lib-python
+set -e
 
 # copy the library code
 cp -r ${SRC_DIR}/site-packages ${PREFIX}
