@@ -1,0 +1,32 @@
+
+package:
+    name: boost
+    version: 1.56.0
+
+source:
+    fn: boost_1_56_0.tar.bz2 [unix]
+    url: http://sourceforge.net/projects/boost/files/boost/1.56.0/boost_1_56_0.tar.bz2 [unix]
+
+    patches:
+      - pypy.patch
+
+build:
+    number: 0
+
+    track_features:
+      - pypy
+
+requirements:
+    build:
+      - zlib [unix]
+      - bzip2 [unix]
+      - python [unix]
+    run:	
+      - zlib [unix]
+      - bzip2 [unix]
+      - python [unix]
+
+about:
+    home: http://www.boost.org/
+    license: Boost-1.0
+
