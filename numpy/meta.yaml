@@ -14,7 +14,10 @@ build:
 
 requirements:
   build:
-    - pypy
+    - python
+
+  run:
+    - python
 
 about:
   home: http://pypy.org
