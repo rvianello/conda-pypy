@@ -18,3 +18,6 @@ make install-private-headers
 
 cd $PREFIX
 rm -rf man share
+
+cd $PREFIX/lib
+ln -s libtcl8.6.so libtcl.so
