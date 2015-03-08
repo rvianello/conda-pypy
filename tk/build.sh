@@ -15,3 +15,6 @@ make install-private-headers
 
 cd $PREFIX
 rm -rf man share
+
+cd $PREFIX/lib
+ln -s libtk8.6.so libtk.so
