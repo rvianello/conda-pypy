@@ -1,16 +1,22 @@
 package:
   name: openssl
-  version: 1.0.1h
+  version: 1.0.2
 
 
 source:
-  fn: openssl-1.0.1h.tar.gz
-  url: http://www.openssl.org/source/openssl-1.0.1h.tar.gz
+  fn: openssl-1.0.2.tar.gz
+  url: https://openssl.org/source/openssl-1.0.2.tar.gz
   patches:
     # http://www.linuxfromscratch.org/patches/downloads/openssl/
 
 build:
   number: 0
+
+requirements:
+  build:
+    - zlib
+  run:
+    - zlib
 
 about:
   home: http://www.openssl.org
