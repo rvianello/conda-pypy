@@ -1,37 +1,45 @@
 pushd ${SRC_DIR}/pypy/goal
-
 CFLAGS=-I${PREFIX}/include LDFLAGS=-L${PREFIX}/lib \
-${PREFIX}/opt/python \
-../../rpython/bin/rpython --shared -Ojit targetpypystandalone
-
+    ${PREFIX}/opt/bin/python \
+    ../../rpython/bin/rpython --shared -Ojit targetpypystandalone
 # any tests I can run from here?
-
 popd
 
 # or from here?
 
-# copy the interpreter
+# create a distribution
+mkdir -p ${SRC_DIR}/dist
+pushd ${SRC_DIR}/pypy/tool/release
+CFLAGS=-I${PREFIX}/include LDFLAGS=-L${PREFIX}/lib \
+    ${PREFIX}/opt/bin/python \
+    package.py --archive-name pypy-distribution --targetdir ${SRC_DIR}/dist
+popd
+
+# unpack it
+pushd ${SRC_DIR}/dist
+tar xvf pypy-distribution.tar.bz2
+popd
+
+# move and copy
+
 pushd ${PREFIX}/bin
-cp ${SRC_DIR}/pypy/goal/pypy-c ./python
-ln -s ./python pypy
+mv ${SRC_DIR}/dist/pypy-distribution/bin/pypy ./python
 popd
 
-# and the shared library
 pushd ${PREFIX}/lib
-cp ${SRC_DIR}/pypy/goal/libpypy-c.so .
+mv ${SRC_DIR}/dist/pypy-distribution/bin/libpypy-c.so .
 popd
 
-# compile the py modules to bytecode
-${PREFIX}/opt/python -m compileall ${SRC_DIR}/site-packages
-${PREFIX}/opt/python -m compileall ${SRC_DIR}/lib_pypy
-set +e # some test modules do not compile
-${PREFIX}/opt/python -m compileall ${SRC_DIR}/lib-python
-set -e
+pushd ${PREFIX}/include
+mv ${SRC_DIR}/dist/pypy-distribution/include/* .
+popd
 
-# copy the library code
-cp -r ${SRC_DIR}/site-packages ${PREFIX}
-cp -r ${SRC_DIR}/lib_pypy ${PREFIX}
-cp -r ${SRC_DIR}/lib-python ${PREFIX}
+pushd ${PREFIX}
+mv ${SRC_DIR}/dist/pypy-distribution/lib_pypy .
+mv ${SRC_DIR}/dist/pypy-distribution/lib-python .
+popd
 
-# copy the headers
-cp -r ${SRC_DIR}/include/* $PREFIX/include
+mkdir ${PREFIX}/site-packages
+pushd ${PREFIX}/site-packages
+mv ${SRC_DIR}/dist/pypy-distribution/site-packages/README .
+popd

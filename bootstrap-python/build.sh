@@ -1,11 +1,12 @@
 pushd ${SRC_DIR}
 
-wget https://bitbucket.org/squeaky/portable-pypy/downloads/pypy-2.3-linux_x86_64-portable.tar.bz2
-tar xvf pypy-2.3-linux_x86_64-portable.tar.bz2
-mv pypy-2.3-linux_x86_64-portable pypy-portable
+wget https://bitbucket.org/squeaky/portable-pypy/downloads/pypy-2.5-linux_x86_64-portable.tar.bz2
+tar xvf pypy-2.5-linux_x86_64-portable.tar.bz2
+mv pypy-2.5-linux_x86_64-portable pypy-portable
 
 popd 
 
+# run the translation
 pushd ${SRC_DIR}/pypy/goal
 
 CFLAGS=-I${PREFIX}/include LDFLAGS=-L${PREFIX}/lib \
@@ -18,23 +19,21 @@ popd
 
 # or from here?
 
-# copy the interpreter
-pushd ${PREFIX}/bin
-cp ${SRC_DIR}/pypy/goal/pypy-c ./python
-ln -s ./python pypy
+# create a distribution
+mkdir -p ${SRC_DIR}/dist
+pushd ${SRC_DIR}/pypy/tool/release
+
+CFLAGS=-I${PREFIX}/include LDFLAGS=-L${PREFIX}/lib \
+${SRC_DIR}/pypy-portable/bin/pypy \
+package.py --archive-name pypy-distribution --targetdir ${SRC_DIR}/dist
+
 popd
 
-# compile the py modules to bytecode
-${SRC_DIR}/pypy-portable/bin/pypy -m compileall ${SRC_DIR}/site-packages
-${SRC_DIR}/pypy-portable/bin/pypy -m compileall ${SRC_DIR}/lib_pypy
-set +e # some test modules do not compile 
-${SRC_DIR}/pypy-portable/bin/pypy -m compileall ${SRC_DIR}/lib-python
-set -e
+pushd ${SRC_DIR}/dist
 
-# copy the library code
-cp -r ${SRC_DIR}/site-packages ${PREFIX}
-cp -r ${SRC_DIR}/lib_pypy ${PREFIX}
-cp -r ${SRC_DIR}/lib-python ${PREFIX}
+tar xvf pypy-distribution.tar.bz2
+mv pypy-distribution/bin/pypy pypy-distribution/bin/python
+mv pypy-distribution ${PREFIX}/opt
 
-# copy the headers
-cp -r ${SRC_DIR}/include/* $PREFIX/include
+popd
+

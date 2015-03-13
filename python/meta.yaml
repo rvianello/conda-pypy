@@ -1,13 +1,13 @@
 package:
   name: python
-  version: "2.7.6.pypy.2.3.1"
+  version: "2.7.8.pypy.2.5.0"
 
 source:
-  fn: release-2.3.1.tar.bz2
-  url: https://bitbucket.org/pypy/pypy/get/release-2.3.1.tar.bz2
+  fn: pypy-2.5.0-src.tar.bz2
+  url: https://bitbucket.org/pypy/pypy/downloads/pypy-2.5.0-src.tar.bz2
 
 build:
-  number: 3
+  number: 1
   
   features:
     - pypy

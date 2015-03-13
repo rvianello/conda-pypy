@@ -1,7 +1,29 @@
-mkdir -p ${PREFIX}/opt
-mkdir -p ${PREFIX}/opt/site-packages
+# run the translation
+pushd ${SRC_DIR}/pypy/goal
 
-cp ${PREFIX}/bin/python ${PREFIX}/opt
-cp -r ${PREFIX}/lib_pypy ${PREFIX}/opt
-cp -r ${PREFIX}/lib-python ${PREFIX}/opt
+CFLAGS=-I${PREFIX}/include LDFLAGS=-L${PREFIX}/lib \
+${PYTHON} ../../rpython/bin/rpython -Ojit targetpypystandalone
+
+# any tests I can run from here?
+
+popd
+
+# or from here?
+
+# create a distribution
+mkdir -p ${SRC_DIR}/dist
+pushd ${SRC_DIR}/pypy/tool/release
+
+CFLAGS=-I${PREFIX}/include LDFLAGS=-L${PREFIX}/lib \
+${PYTHON} package.py --archive-name pypy-distribution --targetdir ${SRC_DIR}/dist
+
+popd
+
+pushd ${SRC_DIR}/dist
+
+tar xvf pypy-distribution.tar.bz2
+mv pypy-distribution/bin/pypy pypy-distribution/bin/python
+mv pypy-distribution ${PREFIX}/opt
+
+popd
 
