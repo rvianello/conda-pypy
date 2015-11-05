@@ -1,13 +1,13 @@
 package:
   name: openssl
-  version: 1.0.2
+  version: 1.0.2d
 
 
 source:
-  fn: openssl-1.0.2.tar.gz
-  url: https://openssl.org/source/openssl-1.0.2.tar.gz
-  patches:
-    # http://www.linuxfromscratch.org/patches/downloads/openssl/
+  fn: openssl-1.0.2d.tar.gz
+  url: https://openssl.org/source/openssl-1.0.2d.tar.gz
+  #patches:
+  #  # http://www.linuxfromscratch.org/patches/downloads/openssl/
 
 build:
   number: 0
